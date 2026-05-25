@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Saberes do Campo | Educação que floresce na terra (Ciano & Branco)</title>
+    <meta name="description" content="Site sobre Educação em Escolas do Campo: valorização da cultura camponesa, pedagogia da alternância e práticas contextualizadas.">
+    <!-- Google Fonts + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&family=Merriweather:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF;
+            color: #1A2B3C;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .logo {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* HEADER / NAVBAR - Ciano e Branco */
+        header {
+            background: #FFFFFF;
+            backdrop-filter: blur(0);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 180, 216, 0.08);
+            border-bottom: 1px solid #E0F2F5;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo a {
+            text-decoration: none;
+            font-size: 1.7rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0096C7, #00B4D8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #1A2B3C;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            color: #00B4D8;
+        }
+
+        /* Botões - tema ciano */
+        .btn {
+            display: inline-block;
+            background-color: #0096C7;
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.25s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0,150,199,0.15);
+        }
+
+        .btn:hover {
+            background-color: #0077B6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,180,216,0.25);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #00B4D8;
+            color: #0096C7;
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: #00B4D8;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* HERO - gradiente sobre imagem com tons ciano */
+        .hero {
+            background: linear-gradient(rgba(0, 105, 128, 0.75), rgba(0, 150, 199, 0.8)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center 35%;
+            padding: 5rem 0 6rem 0;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Seções padrão */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: #0077B6;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: #00B4D8;
+            margin: 0.8rem auto 0;
+            border-radius: 3px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .img-fluid {
+            width: 100%;
+            border-radius: 28px;
+            box-shadow: 0 20px 35px -12px rgba(0, 120, 150, 0.15);
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .img-fluid:hover {
+            transform: scale(1.02);
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 12px 28px -8px rgba(0, 150, 199, 0.08);
+            border: 1px solid #D6EEF2;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 36px -12px rgba(0, 180, 216, 0.2);
+        }
+
+        .card i {
+            font-size: 2.8rem;
+            color: #00B4D8;
+            margin-bottom: 1.2rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #0077B6;
+        }
+
+        /* Lista de desafios / alternância */
+        .challenge-list {
+            background-color: #F0F9FC;
+            border-radius: 36px;
+            padding: 2rem 2rem;
+            list-style: none;
+        }
+
+        .challenge-list li {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            align-items: baseline;
+        }
+
+        .challenge-list i {
+            color: #00B4D8;
+            font-size: 1.4rem;
+            min-width: 28px;
+        }
+
+        .citacao {
+            background: #E6F7FA;
+            border-left: 6px solid #00B4D8;
+            padding: 2rem 2.5rem;
+            border-radius: 32px;
+            font-style: italic;
+            font-size: 1.2rem;
+            font-family: 'Merriweather', serif;
+            color: #1A4A5E;
+            margin: 2rem 0;
+        }
+
+        /* Práticas inspiradoras (gallery cards) */
+        .praticas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .pratica-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.08);
+            transition: all 0.2s;
+            border: 1px solid #E0F2F5;
+        }
+
+        .pratica-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .pratica-texto {
+            padding: 1.5rem;
+        }
+
+        .pratica-texto h4 {
+            font-size: 1.3rem;
+            color: #0077B6;
+            margin-bottom: 0.6rem;
+        }
+
+        /* Footer - tema ciano escuro */
+        footer {
+            background: #0C4A6E;
+            color: #E0F7FA;
+            padding: 3rem 0 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.6rem;
+            color: #90E0EF;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #CAF0F8;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #00B4D8;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #1E6B8F;
+            padding-top: 1.5rem;
+            font-size: 0.85rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .nav-links {
+                justify-content: center;
+                gap: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .grid-2 {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .section-title {
+                font-size: 1.9rem;
+            }
+            .citacao {
+                padding: 1.5rem;
+                font-size: 1rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+            .card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Ajuste para ícones e elementos extras */
+        .pratica-texto i, .card i {
+            transition: transform 0.2s;
+        }
+        .card:hover i {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="#">🌊 Saberes do Campo</a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#principios">Princípios</a></li>
+                    <li><a href="#praticas">Práticas</a></li>
+                    <li><a href="#desafios">Desafios</a></li>
+                </ul>
+                <a href="#contato-simbolico" class="btn btn-outline" style="font-size:0.9rem;"><i class="fas fa-water"></i> Participe</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>Educação que floresce<br>na terra e na identidade camponesa</h1>
+                <p>Valorizando saberes, fortalecendo comunidades e construindo um futuro sustentável no campo.</p>
+                <a href="#sobre" class="btn"><i class="fas fa-leaf"></i> Conheça mais</a>
+            </div>
+        </section>
+
+        <!-- Sobre - o que são escolas do campo -->
+        <section id="sobre">
+            <div class="container">
+                <h2 class="section-title">O que são as Escolas do Campo?</h2>
+                <div class="grid-2">
+                    <div>
+                        <p style="font-size:1.1rem; margin-bottom:1rem;">As <strong>Escolas do Campo</strong> são instituições situadas em territórios rurais, que respeitam a diversidade cultural, os ciclos da natureza, o trabalho agrícola familiar e as lutas dos povos do campo — camponeses, agricultores familiares, ribeirinhos, quilombolas e indígenas.</p>
+                        <p>Diferente de um modelo urbano transplantado, essa educação valoriza a <strong>pedagogia da alternância</strong>, o protagonismo juvenil e a construção coletiva do conhecimento em diálogo com a realidade local. Forma cidadãos críticos, conectados à terra e comprometidos com a justiça socioambiental.</p>
+                        <div class="citacao">
+                            <i class="fas fa-quote-left" style="margin-right: 8px; color:#00B4D8;"></i> “A educação do campo não é um privilégio, é um direito conquistado pelo povo. Educar com identidade é semear emancipação.”
+                        </div>
+                    </div>
+                    <div>
+                        <img class="img-fluid" src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Crianças em atividade escolar rural, cercadas pela paisagem campestre" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pilares: 3 cards principais -->
+        <section id="principios" style="background-color: #F6FDFF;">
+            <div class="container">
+                <h2 class="section-title">Pilares da Educação do Campo</h2>
+                <div class="cards-grid">
+                    <div class="card">
+                        <i class="fas fa-hand-holding-heart"></i>
+                        <h3>Contextualização</h3>
+                        <p>O currículo integra saberes locais, história, agricultura e cultura camponesa, conectando a teoria com a prática na terra.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h3>Pedagogia da Alternância</h3>
+                        <p>Alternância entre tempo-escola e tempo-comunidade, onde o aluno vivencia experiências práticas na família e no território.</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-users"></i>
+                        <h3>Protagonismo e Autogestão</h3>
+                        <p>Estudantes como sujeitos ativos, envolvidos na gestão escolar, nas assembleias comunitárias e na lógica agroecológica.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Práticas inspiradoras (imagens + relatos) -->
+        <section id="praticas">
+            <div class="container">
+                <h2 class="section-title">Práticas que Transformam Realidades</h2>
+                <div class="praticas-grid">
+                    <div class="pratica-card">
+                        <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Crianças plantando em horta escolar" loading="lazy">
+                        <div class="pratica-texto">
+                            <h4><i class="fas fa-seedling"></i> Horta como Laboratório Vivo</h4>
+                            <p>Escolas do campo transformam o solo em sala de aula: ciências, matemática e meio ambiente integrados ao cultivo agroecológico.</p>
+                        </div>
+                    </div>
+                    <div class="pratica-card">
+                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Estudantes fazendo roda de conversa ao ar livre" loading="lazy">
+                        <div class="pratica-texto">
+                            <h4><i class="fas fa-school"></i> Roda de Saberes</h4>
+                            <p>Encontros com agricultores experientes, troca de conhecimentos sobre sementes crioulas, manejo e tradições orais.</p>
+                        </div>
+                    </div>
+                    <div class="pratica-card">
+                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Jovens em projeto de arte e cultura caipira" loading="lazy">
+                        <div class="pratica-texto">
+                            <h4><i class="fas fa-guitar"></i> Arte & Identidade</h4>
+                            <p>Valorização da cultura regional: música de raiz, folguedos, literatura popular e artesanato como eixos formativos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Desafios + Perspectivas -->
+        <section id="desafios" style="background-color: #F0F9FC;">
+            <div class="container">
+                <h2 class="section-title">Desafios & Caminhos para o Futuro</h2>
+                <div class="grid-2">
+                    <div>
+                        <ul class="challenge-list">
+                            <li><i class="fas fa-road"></i> <strong>Infraestrutura e transporte</strong> – Distância e más condições ainda são barreiras para acesso contínuo.</li>
+                            <li><i class="fas fa-chalkboard-teacher"></i> <strong>Formação docente específica</strong> – Necessidade de professores preparados para a realidade do campo.</li>
+                            <li><i class="fas fa-calendar-alt"></i> <strong>Calendário agrícola</strong> – Respeitar épocas de plantio e colheita no ano letivo.</li>
+                            <li><i class="fas fa-chart-line"></i> <strong>Investimento público</strong> – Políticas consistentes como o PRONACAMPO precisam de continuidade.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div style="background: white; border-radius: 28px; padding: 2rem; border: 1px solid #D6EEF2;">
+                            <i class="fas fa-sun-plant-wilt" style="font-size: 2rem; color:#00B4D8;"></i>
+                            <h3 style="margin: 1rem 0 1rem; color:#0077B6;">Perspectivas: resistência e inovação</h3>
+                            <p>Movimentos sociais, redes de alternância e novas leis (Diretrizes Operacionais para a Educação do Campo) têm ampliado direitos. A educação contextualizada gera permanência no campo com qualidade, diminui êxodo rural e promove agroecologia.</p>
+                            <p style="margin-top: 1rem;">💧 <strong>Resiliência camponesa:</strong> Cada escola do campo é um ponto de cultura, esperança e transformação social.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção extra: Números simbólicos e citação final -->
+        <section>
+            <div class="container" style="text-align: center;">
+                <div style="background: linear-gradient(115deg, #E6F7FA, #FFFFFF); border-radius: 48px; padding: 2.5rem 1.5rem; border: 1px solid #BCEAF2;">
+                    <i class="fas fa-tree" style="font-size: 3rem; color: #0096C7;"></i>
+                    <h3 style="font-size: 1.8rem; margin: 1rem 0; color:#0077B6;">"A escola do campo tem cheiro de terra molhada e gosto de futuro colhido com dignidade."</h3>
+                    <p style="max-width: 700px; margin: 0 auto;">Mais de 70% das escolas rurais brasileiras estão localizadas em áreas de agricultura familiar. Investir na qualidade do ensino é garantir sujeitos capazes de inovar e preservar o bioma.</p>
+                    <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
+                        <div><i class="fas fa-book-open"></i> <strong>+4.500</strong><br>Escolas do campo em alternância</div>
+                        <div><i class="fas fa-user-graduate"></i> <strong>+1,2 milhão</strong><br>Estudantes no campo (Brasil)</div>
+                        <div><i class="fas fa-hand-peace"></i> <strong>20 anos</strong><br>Lutas por diretrizes específicas</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato simbólico (âncora) -->
+        <div id="contato-simbolico"></div>
+        <section style="padding: 2rem 0 3rem 0;">
+            <div class="container" style="text-align: center; background: #FFF; border-radius: 48px; padding: 2rem; box-shadow: 0 8px 20px rgba(0,180,216,0.05); border: 1px solid #D6EEF2;">
+                <i class="fas fa-envelope-open-text" style="font-size: 2.5rem; color: #0096C7;"></i>
+                <h3>Quer apoiar ou conhecer mais iniciativas?</h3>
+                <p style="margin: 1rem 0 1.5rem;">Entre em contato com redes de educação do campo ou compartilhe essa causa. Juntos semeamos transformação!</p>
+                <a href="#" class="btn" style="background-color:#0096C7;"><i class="fas fa-paper-plane"></i> Simbolize esse apoio</a>
+                <p style="margin-top: 1rem; font-size:0.8rem;">✉️ contato@saberesdocampo.org (ilustrativo)</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3><i class="fas fa-tractor"></i> Saberes do Campo</h3>
+                    <p>Educação, identidade e soberania alimentar.</p>
+                </div>
+                <div class="footer-links">
+                    <div>
+                        <h4>Mapa do site</h4>
+                        <ul style="list-style: none; margin-top: 8px;">
+                            <li><a href="#sobre">Sobre</a></li>
+                            <li><a href="#principios">Princípios</a></li>
+                            <li><a href="#praticas">Práticas</a></li>
+                            <li><a href="#desafios">Desafios</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4>Referências</h4>
+                        <ul style="list-style: none; margin-top: 8px;">
+                            <li><a href="#">Diretrizes da Educação do Campo</a></li>
+                            <li><a href="#">Movimento por uma Educação do Campo</a></li>
+                            <li><a href="#">UNESCO – Educação Rural</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Saberes do Campo — Respeito à memória camponesa e ao direito à educação contextualizada. <br> Imagens: Unsplash / Licença gratuita | Conteúdo desenvolvido com paleta ciano e branco.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
